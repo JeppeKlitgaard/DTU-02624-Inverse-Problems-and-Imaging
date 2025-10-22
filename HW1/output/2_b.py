@@ -9,7 +9,7 @@ U, S, Vh = np.linalg.svd(A)
 expansion_coefficients = np.abs(U.T @ y_noisy)
 reconstruction_coefficients = expansion_coefficients / S
 # Perform Picard plot
-plt.figure(figsize=(PAPER_WIDTH_IN, 2.3))
+plt.figure(figsize=(PAPER_WIDTH_IN, 2.1))
 plt.title("Picard Plot for Abel Problem with $x(s) = s^2$")
 plt.plot(j, S, marker="o", ls="-", ms=5, label="Singular,\n$μ_k$")
 plt.plot(

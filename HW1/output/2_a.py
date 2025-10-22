@@ -4,7 +4,7 @@ n = 512
 a = 0
 b = 1
 h = (b - a) / n
-print(np.sqrt(2/h)*h)
+print(np.sqrt(2 / h) * h)
 s = a + (np.arange(n) + 0.5) * h
 t = s + h / 2  # Shift t values to prevent singularity at t=s
 
@@ -15,9 +15,7 @@ A = np.zeros((n, n))
 indices = s_mesh < t_mesh  # Select according to integral
 A[indices] = h / np.sqrt((t_mesh[indices] - s_mesh[indices]))
 
-U, S, Vh = np.linalg.svd(A)
-print(A[:, -1])
-# Set up x
+
 def x_1_func(s):
     return s**2
 

@@ -1,7 +1,7 @@
 alphas = np.geomspace(1e-4, 10, 10)
 alphas = [1e-4, 1e-3, 1e-2, 1e-1, 1, 10]
 
-plt.figure(figsize=(PAPER_WIDTH_IN, 2.5))
+plt.figure(figsize=(PAPER_WIDTH_IN, 2.2))
 for alpha in alphas:
     x_tikhonov = np.linalg.inv(A.T @ A + alpha * np.eye(n)) @ A.T @ y_noisy
     plt.plot(s, x_tikhonov, label=f"$x_{{{alpha}}}(s)$")
@@ -36,7 +36,7 @@ x_best_tsvd = A_inv_truncated @ y_noisy
 alpha = 4e-2
 x_best_tikhonov = np.linalg.inv(A.T @ A + alpha * np.eye(n)) @ A.T @ y_noisy
 
-plt.figure(figsize=(PAPER_WIDTH_IN, 2.3))
+plt.figure(figsize=(PAPER_WIDTH_IN, 2.1))
 plt.plot(s, x_best_tikhonov, label=f"$x_{{α={alpha}}}(s)$", lw=1)
 plt.plot(s, x_best_tsvd, label=f"$x_{{k={k}}}(s)$", lw=1)
 plt.plot(s, x_true, label="$x(s)$", ls="--", color="k")

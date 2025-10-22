@@ -329,8 +329,7 @@ $
 
 Which requires us to find an expression for the adjoint operator $K^*$, defined through the inner product:
 $
-  (K x, y) &= (x, K^* y)\
-  &= ∫_0^1 (∫_0^t 1/sqrt(t-s) x(s) dif s) overline(y(t)) dif t\
+  (K x, y) &= (x, K^* y) = ∫_0^1 (∫_0^t 1/sqrt(t-s) x(s) dif s) overline(y(t)) dif t\
   &= ∫_0^1 x(s) (∫_s^1 1/sqrt(t-s) overline(y(t)) dif t) dif s = (x, K^* y)
 $
 Where the interchange of the integrals is enabled by Fubini's theorem and we identify the adjoint operator as:
@@ -343,6 +342,7 @@ The transformation of the limits may be appreciated by considering the sketch be
 #figure(
   cetz.canvas({
     import cetz.draw: *
+    scale(0.8)
     let x-range = 1.5
     let y-range = 1.5
     let arrow-style = (mark: (end: "stealth", fill: black))
@@ -401,42 +401,6 @@ We note that the proof does not immediately extend to the discrete case where th
 approximated by a quadrature rule, though given the discretised operator must approximate its
 continuous equivalent with increasingly fine discretisations, it must hold $x_"rec" (s=1)$ is biased
 towards zero as the discretisation is refined.
-
-//  by adopting the notation that the reconstruction using truncation level $k$ is denoted $x^((k))$
-// and considering this reconstruction using summation notation:
-// $
-//   x^((k))_i = ∑_(j=1)^k sum_(l=1)^k sum_(m=1)^n V_(i j) (Σ^(-1))_(j l) (U^TT)_(l m) y^δ_m
-// $
-// Noting that the diagonality of $Σ^(-1)$ implies $Σ^(-1)_(j l) = 1/μ_j δ_(j l)$ and $(U^TT)_(l m) = U_(m l)$ we simplify while restricting ourselves to the last discretisation point $i=n$:
-// $
-//   x^((k))_n = ∑_(j=1)^k V_(n j) 1/μ_j ∑_(m=1)^n U_(m j) y^δ_m
-// $ <eq:abel_reconstruction_last_point>
-
-// We seek to determine the value of $V_(n j)$, which we do through the discretiation of @eq:singular_system_def:
-// $
-//   A_(i j) V_(j k) = U_(i j) Σ_(j k) ⇔ A_(l i) U_(l j) = V_(i l) Σ_(j l) = V_(i j) μ_j
-// $
-// Where $A_(j i)$ are the elements of the discretised operator of @eq:2_abel_forward:
-// $
-//   A_(j i) = cases(
-//     sqrt(h/(t_j - s_i)) quad & "if" quad s_i < t_j\
-//     0 quad & "otherwise" quad
-//   )
-// $
-
-// Given that $s_n > t_j$ for all $j$ we find that $A_(j n) = 0$ for all $j$, which implies:
-// $
-//   0 = V_(n j) μ_j
-// $ <eq:V_nj_zero_constraint>
-
-// Given that we have truncated the sum over index $j$ at a sensible level $k$, we have guaranteed that $μ_j ≠ 0$ for all $j ≤ k$, which in turn requires $V_(n j) = 0$ for all $j ≤ k$ by @eq:V_nj_zero_constraint.
-
-// If we now use this result in @eq:abel_reconstruction_last_point we find:
-// $
-//   x^((k))_n = ∑_(j=1)^k 0 ⋅ 1/μ_j ∑_(m=1)^n U_(m j) y^δ_m = 0
-// $
-
-// Which proves that the reconstruction at the last discretisation point is always zero.
 
 == Tikhonov Regularisation <sec:2.c>
 
@@ -625,7 +589,8 @@ $
 ∫_0^π sin(j s) sin(n s) dif s
 &= 1/2 [sin((n-j)π)/(n-j) - sin((2n)π)/(2n)]\
 &= 1/2 sin((n-j)π)/(n-j)\
-&= 1/2 ((n-j)π - (n-j)^3 π^3 + (n-j)^5 π^5 - …)\
+&= 1/2 1/(n-j) [(n-j)π - ((n-j)^3 π^3)/(3!) + ((n-j)^5 π^5)/(5!) - …]\
+&= 1/2 [π - ((n-j)^2 π^3)/(3!) + ((n-j)^4 π^5)/(5!) - …]\
 &= π/2 + 0
 $
 
@@ -815,5 +780,5 @@ Since $K_ε → K$ in the operator norm as $ε → 0^+$ and $K_ε$ is compact, w
 == Code for @sec:3.b <app:code_3_b>
 #raw(read("output/3_b.py"), block: true, lang: "python")
 
+#pagebreak()
 #bibliography("refs.bib")
-
