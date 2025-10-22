@@ -1,0 +1,16 @@
+[project]
+name = "02624-inverse-problems-and-imaging"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "cuqipy",
+    "ipykernel>=6.30.1",
+    "matplotlib>=3.10.6",
+    "numpy>=2.3.3",
+    "pip>=25.2",
+    "scipy>=1.16.1",
+    "seaborn>=0.13.2",
+]
+
+[tool.uv.sources]
+cuqipy = { git = "https://github.com/CUQI-DTU/CUQIpy.git" }
