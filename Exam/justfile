@@ -1,0 +1,12 @@
+default:
+    just --list
+
+build:
+    typst c --root . HW1/HW1_presentation.typ
+    typst c --root . HW2/HW2_presentation.typ
+    typst c --root . HW3/HW3_presentation.typ
+
+    mv HW1/HW1_presentation.pdf HW1_presentation.pdf
+    mv HW2/HW2_presentation.pdf HW2_presentation.pdf
+    mv HW3/HW3_presentation.pdf HW3_presentation.pdf
+

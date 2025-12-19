@@ -1,21 +1,19 @@
-Great work - approved
+Great solution - approved
 
 Exercise 1:
 
-a) Very good. For the covariance, I suppose you assume A to have full rank. Is that reasonable here?
+a) Great essay
 
-b) Excellent. Does the CI change in the interval?
+b) Fine. The operator is not really a convolution, since the integral kernel does not equal k(t-s). You could try even more basis functions.
 
-c) Good. Apparently we get worse reconstruction, when T is small. Can you explain that?
+c) Correct
+
+d) Great. Did you also plot the residual norm? How would theat go?
 
 Exercise 2
 
-a) Correct
+a) Nice plot
 
-b) Very clear argument. You could also look at the augmented matrix for the least squares formulation. That matrix has full rank...
+b) Good explanations and comparisons.
 
-c)-d) Great observations and plots. You make use of some central difference matrix. Does that have a null space (like we observed in class) and does that influence the solution?
-
-# In class feedback
-
-- Use augmented matrix for 2.b instead
+c) Very good
